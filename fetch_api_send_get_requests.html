@@ -27,7 +27,7 @@
      .then(response => response.json())
      .then(myData => {
 
-        let item = `<tr> <th> ID </th> <th> Title </th> </tr>`;
+        let item = `<tr> <th> ID </th> <th> Title </th> <th> Status </th> </tr>`;
 
      // Iterate through each entry and add them to the table 
 
@@ -35,6 +35,7 @@
         item += `<tr>
             <td> ${users.id} </td>
             <td> ${users.title} </td>
+            <td>  ${users.completed} </td>
         </tr>`;
      });
 
