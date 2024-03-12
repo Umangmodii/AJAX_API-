@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request | AJAX</title>
+</head>
+<body>
+
+    <h1>Example of Fetch API</h1>
+
+    <script>
+
+        // Creating Obejcts
+
+        const MyRequest = new Request("https://jsonplaceholder.typicode.com/todos");
+
+        //  Using blob() method
+
+        MyRequest.blob()
+            .then(data => {
+                    console.log(data);
+            });
+
+         // Creating a copy of the request using the clone() method
+
+         const duplicate = MyRequest.clone();
+         console.log(duplicate);
+
+
+
+    </script>
+    
+</body>
+</html>

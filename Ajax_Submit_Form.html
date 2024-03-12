@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Submit Data | AJAX </title>
+  </head>
+  <body>
+
+    <form id = "mForm">
+        <h2>Enter the requested Data</h2>
+        <label for="Utitle">Title</label>
+        <input id="Utitle" type="text" name="title"><br>
+     
+        <label for="UId">UserId</label>
+        <input id="UId" type="number" name="UserID"><br>
+     
+        <label for="Ubody">Body</label>
+        <input id="Ubody" type="text" name="body"><br>
+     
+        <label for="Uage">Age</label>
+        <input id="Uage" type="number" name="age"><br>
+     
+        <button type="button" onclick="sendFormData()">Submit Record</button>
+     </form>
+     <div id="example"></div>
+
+
+</body>
+
+<script>
+
+    function sendFormData()
+    {
+        // Create a Xhttp Objects
+        var xhttp = new XMLHttpRequest();
+
+        // Form 
+        const form = document.querySelector("#mForm");
+
+         // Creating FormData object
+        const myForm = new FormData(mFormEle);
+
+        // Callback Objects
+        xhttp.onreadystatechange = function()
+        {
+            if (this.readyState == 4 && this.status == 201)
+            {
+                    document.getElementById('example').innerHTML = this.response;
+                    console.log("Form Data Posted Successfully")
+            }
+        };
+
+        // Opend a xhttp
+        xhttp.open("POST","https://jsonplaceholder.typicode.com/todos",true);
+
+        xhttp.send(new FormData(mFormEle));
+    }
+
+</script>
+
+</html>

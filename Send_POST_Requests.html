@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Post Request | AJAX</title>
+</head>
+<body>
+    
+   <!--Creating simple form-->
+   <h2>Enter data</h2>
+   <label for="Utitle">Title</label>
+   <input id="Utitle" type="text" name="title"><br>
+   
+   <label for="UId">UserId</label>
+   <input id="UId" type="number" name="UserID"><br>
+   
+   <label for="Ubody">Body</label>
+   <input id="Ubody" type="text" name="body"><br>
+   
+   <button type="button" onclick="sendRecords()">Submit</button>
+   <div id="example"></div>
+    
+</body>
+</html>
+
+<script type = "text/javascript"> 
+
+    function sendRecords()
+    {
+        // Create a new XMLHttpRequest
+
+       var xhttp = new XMLHttpRequest();
+
+        // JSON document
+
+        const postData = {
+
+        Utitle : document.querySelector('#Utitle').value,
+        UId  : document.querySelector('#UId').value ,
+        Ubody : document.querySelector('#Ubody').value
+
+        }
+
+        // Creating call back function
+
+        xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 201)
+                {
+                    document.getElementById('example').innerHTML = this.response;
+                    console.log("Document send Successfully!")
+                }
+                
+                console.log("Error Found!")
+        };
+
+        xhttp.open("POST","https://jsonplaceholder.typicode.com/todos",true);
+
+    // Setting HTTP request header 
+       xhttp.setRequestHeader('Content-type', 'application/json')
+
+        xhttp.send(JSON.stringify(postData));
+
+    };
+
+</script>
